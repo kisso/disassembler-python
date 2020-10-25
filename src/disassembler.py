@@ -24,19 +24,19 @@ class Disassembler:
             rs = self._registers.get((self._r_type_format.get('rs') & instruction) >> 21)
             rt = self._registers.get((self._r_type_format.get('rt') & instruction) >> 16)
             rd = self._registers.get((self._r_type_format.get('rd') & instruction) >> 11)
-            shift = str((self._r_type_format.get('shift') & instruction) >> 6)
+            shift = (self._r_type_format.get('shift') & instruction) >> 6
             func = self._r_type_format.get('func') & instruction
             template = self._instructions.get(opcode).get(func)
 
             decoded_instruction = template.get('syntax').replace('$rs', rs)
             decoded_instruction = decoded_instruction.replace('$rt', rt)
             decoded_instruction = decoded_instruction.replace('$rd', rd)
-            decoded_instruction = decoded_instruction.replace('$shift', shift)
+            decoded_instruction = decoded_instruction.replace('$shift', f'{shift:#010x}')
         # J-type
         elif opcode in [2, 3]:
             offset = self._j_type_format.get('offset') & instruction
             template = self._instructions.get(opcode)
-            decoded_instruction = template.get('syntax').replace('$offset', str(hex(offset)))
+            decoded_instruction = template.get('syntax').replace('$offset', f'{offset:#010x}')
         # I-type
         else:
             rs = self._registers.get((self._i_type_format.get('rs') & instruction) >> 21)
@@ -46,7 +46,7 @@ class Disassembler:
 
             decoded_instruction = template.get('syntax').replace('$rs', rs)
             decoded_instruction = decoded_instruction.replace('$rt', rt)
-            decoded_instruction = decoded_instruction.replace('$imm', str(hex(imm)))
+            decoded_instruction = decoded_instruction.replace('$imm', f'{imm:#010x}')
 
         print(decoded_instruction)
 
