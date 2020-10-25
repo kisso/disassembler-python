@@ -100,6 +100,12 @@
         "func": 8,
         "syntax": "jr $rs"
       },
+      "9": {
+        "type": "R",
+        "opcode": 0,
+        "func": 9,
+        "syntax": "jalr $rd, $rs"
+      },
       "12": {
         "type": "R",
         "opcode": 0,
@@ -275,6 +281,11 @@
       "opcode": "0x0D",
       "syntax": "ori $rt, $rs, $imm"
     },
+    "14": {
+      "type": "I",
+      "opcode": "0x0E",
+      "syntax": "xori $rt, $rs, $imm"
+    },
     "15": {
       "type": "I",
       "opcode": "0x0F",
@@ -284,6 +295,11 @@
       "type": "I",
       "opcode": "0x20",
       "syntax": "lb $rt, $imm($rs)"
+    },
+    "33": {
+      "type": "I",
+      "opcode": "0x21",
+      "syntax": "lh $rt, $imm($rs)"
     },
     "35": {
       "type": "I",

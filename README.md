@@ -14,6 +14,7 @@
 | R | `srlv` | Shift Word Right Logical Variable | 0x00 (0) | 0x07 (6) |
 | R | `srav` | Shift Word Right Arithmetic Variable | 0x00 (0) | 0x07 (7) |
 | R | `jr` | Jump Register | 0x00 (0) | 0x08 (8) |
+| R | `jalr` | Jump and Link Register | 0x00 (0) | 0x09 (9) |
 | R | `syscall` | System Call | 0x00 (0) | 0x0C (12) |
 | R | `mfhi` | Move From HI Register | 0x00 (0) | 0x10 (16) |
 | R | `mthi` | Move to HI Register | 0x00 (0) | 0x11 (17) |
@@ -55,8 +56,10 @@
 | I | `sltiu` | Set on Less Than Immediate Unsigned | 0x0B (11) |
 | I | `andi` | Bitwise AND Immediate | 0x0C (12) |
 | I | `ori` | Bitwise OR Immediate | 0x0D (13) |
+| I | `xori` | Bitwise XOR Immediate | 0x0E (14) |
 | I | `lui` | Load Upper Immediate | 0x0F (15) |
 | I | `lb` | Load Byte | 0x20 (32) |
+| I | `lh` | Load Halfword | 0x21 (33) |
 | I | `lw` | Load Word | 0x23 (35) |
 | I | `lbu` | Load Byte Unsigned | 0x24 (36) |
 | I | `lhu` | Load Halfword Unsigned | 0x25 (37) |
