@@ -57,12 +57,16 @@ class Disassembler:
 
         # R-type
         if opcode == 0:
-            rs = self._registers.get((self._r_type_format.get('rs') & instruction) >> 21)
-            rt = self._registers.get((self._r_type_format.get('rt') & instruction) >> 16)
-            rd = self._registers.get((self._r_type_format.get('rd') & instruction) >> 11)
-            shift = (self._r_type_format.get('shift') & instruction) >> 6
-            func = self._r_type_format.get('func') & instruction
-            template = self._instructions.get(opcode).get(func)
+            try:
+                rs = self._registers[(self._r_type_format.get('rs') & instruction) >> 21]
+                rt = self._registers[(self._r_type_format.get('rt') & instruction) >> 16]
+                rd = self._registers[(self._r_type_format.get('rd') & instruction) >> 11]
+                shift = (self._r_type_format.get('shift') & instruction) >> 6
+                func = self._r_type_format.get('func') & instruction
+                template = self._instructions[opcode][func]
+            except KeyError:
+                print('Unsupported instruction!')
+                return
 
             decoded_instruction = template.get('syntax').replace('$rs', rs)
             decoded_instruction = decoded_instruction.replace('$rt', rt)
@@ -75,10 +79,14 @@ class Disassembler:
             decoded_instruction = template.get('syntax').replace('$offset', f'{offset:#010x}')
         # I-type
         else:
-            rs = self._registers.get((self._i_type_format.get('rs') & instruction) >> 21)
-            rt = self._registers.get((self._i_type_format.get('rt') & instruction) >> 16)
-            imm = self._i_type_format.get('imm') & instruction
-            template = self._instructions.get(opcode)
+            try:
+                rs = self._registers[(self._i_type_format.get('rs') & instruction) >> 21]
+                rt = self._registers[(self._i_type_format.get('rt') & instruction) >> 16]
+                imm = self._i_type_format.get('imm') & instruction
+                template = self._instructions.get(opcode)
+            except KeyError:
+                print('Unsupported instruction!')
+                return
 
             decoded_instruction = template.get('syntax').replace('$rs', rs)
             decoded_instruction = decoded_instruction.replace('$rt', rt)
