@@ -82,6 +82,12 @@
         "func": 8,
         "syntax": "jr $rs"
       },
+      "12": {
+        "type": "R",
+        "opcode": 0,
+        "func": 12,
+        "syntax": "syscall"
+      },
       "16": {
         "type": "R",
         "opcode": 0,

@@ -11,6 +11,7 @@
 | R | `srl` | Logical Shift Right (0-extended) | 0x00 (0) | 0x02 (2) |
 | R | `sra` | Arithmetic Shift Right (sign-extended) | 0x00 (0) | 0x03 (3) |
 | R | `jr` | Jump to Address in Register | 0x00 (0) | 0x08 (8) |
+| R | `syscall` | System Call | 0x00 (0) | 0x0C (12) |
 | R | `mfhi` | Move from HI Register | 0x00 (0) | 0x10 (16) |
 | R | `mthi` | Move to HI Register | 0x00 (0) | 0x11 (17) |
 | R | `mflo` | Move from LO Register | 0x00 (0) | 0x12 (18) |
