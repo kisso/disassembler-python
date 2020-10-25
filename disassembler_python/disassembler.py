@@ -1,3 +1,7 @@
+import json
+from sys import exit
+
+
 class Disassembler:
 
     def __init__(self, configuration, instructions_to_decode):
@@ -10,6 +14,38 @@ class Disassembler:
         self._j_type_format = configuration.get('j_type_format')
         self._i_type_format = configuration.get('i_type_format')
         self.instructions_to_decode = instructions_to_decode
+
+    @staticmethod
+    def _mips_decoder(x):
+        if isinstance(x, dict):
+            new_dict = {}
+            for k, v in x.items():
+                try:
+                    new_dict[int(k)] = v
+                except ValueError:
+                    new_dict[k] = v
+
+                    if isinstance(v, str) and v.startswith('0b'):
+                        new_dict[k] = int(v, 2)
+
+            return new_dict
+
+        return x
+
+    @classmethod
+    def initialize(cls, path_to_input: str, path_to_configuration: str):
+        try:
+            with open(file=path_to_input) as f:
+                input_data = f.read().splitlines()
+        except FileNotFoundError:
+            print(f'Can not load a file: {path_to_input}')
+            print('Try a different file!')
+            exit()
+
+        with open(file=path_to_configuration) as json_file:
+            configuration = json.load(json_file, object_hook=cls._mips_decoder)
+
+        return cls(configuration, input_data)
 
     def decode_instruction(self, instruction: int):
         opcode = (instruction & self._opcode) >> 26
