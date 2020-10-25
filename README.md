@@ -5,11 +5,14 @@
 
 ### R-type instructions:
 
-| Type | Keyword | Meaning | Opcode (int) | Func (int) |
+| Type | Keyword | Purpose | Opcode (int) | Func (int) |
 | :---: | :---: | :--- | :---: | :---: |
 | R | `sll` | Logical Shift Left | 0x00 (0) | 0x00 (0) |
 | R | `srl` | Logical Shift Right (0-extended) | 0x00 (0) | 0x02 (2) |
 | R | `sra` | Arithmetic Shift Right (sign-extended) | 0x00 (0) | 0x03 (3) |
+| R | `sllv` | Shift Word Left Logical Variable | 0x00 (0) | 0x04 (4) |
+| R | `srlv` | Shift Word Right Logical Variable | 0x00 (0) | 0x07 (6) |
+| R | `srav` | Shift Word Right Arithmetic Variable | 0x00 (0) | 0x07 (7) |
 | R | `jr` | Jump to Address in Register | 0x00 (0) | 0x08 (8) |
 | R | `syscall` | System Call | 0x00 (0) | 0x0C (12) |
 | R | `mfhi` | Move from HI Register | 0x00 (0) | 0x10 (16) |
@@ -33,14 +36,14 @@
 
 ### J-type instructions:
 
-| Type | Keyword | Meaning | Opcode (int) |
+| Type | Keyword | Purpose | Opcode (int) |
 | :---: | :---: | :--- | :---: |
 | J | `j` | Jump to Address | 0x02 (2) |
 | J | `jal` | Jump and Link | 0x03 (3) |
 
 ### I-type instructions:
 
-| Type | Keyword | Meaning | Opcode (int) |
+| Type | Keyword | Purpose | Opcode (int) |
 | :---: | :---: | :--- | :---: |
 | I | `beq` | Branch if Equal | 0x04 (4) |
 | I | `bne` | Branch if Not Equal | 0x05 (5) |

@@ -76,6 +76,24 @@
         "func": 3,
         "syntax": "sra $rd, $rt, $shift"
       },
+      "4": {
+        "type": "R",
+        "opcode": 0,
+        "func": 4,
+        "syntax": "sllv $rd, $rt, $rs"
+      },
+      "6": {
+        "type": "R",
+        "opcode": 0,
+        "func": 6,
+        "syntax": "srlv $rd, $rt, $rs"
+      },
+      "7": {
+        "type": "R",
+        "opcode": 0,
+        "func": 7,
+        "syntax": "srav $rd, $rt, $rs"
+      },
       "8": {
         "type": "R",
         "opcode": 0,
