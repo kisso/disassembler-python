@@ -1,0 +1,311 @@
+{
+  "registers": {
+    "0": "$zero",
+    "1": "$at",
+    "2": "$v0",
+    "3": "$v1",
+    "4": "$a0",
+    "5": "$a1",
+    "6": "$a2",
+    "7": "$a3",
+    "8": "$t0",
+    "9": "$t1",
+    "10": "$t2",
+    "11": "$t3",
+    "12": "$t4",
+    "13": "$t5",
+    "14": "$t6",
+    "15": "$t7",
+    "16": "$s0",
+    "17": "$s1",
+    "18": "$s2",
+    "19": "$s3",
+    "20": "$s4",
+    "21": "$s5",
+    "22": "$s6",
+    "23": "$s7",
+    "24": "$t8",
+    "25": "$t9",
+    "26": "$k0",
+    "27": "$k1",
+    "28": "$gp",
+    "29": "$sp",
+    "30": "$fp",
+    "31": "$ra"
+  },
+  "opcodes": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    32,
+    35,
+    36,
+    37,
+    40,
+    41,
+    43
+  ],
+  "instructions": {
+    "0": {
+      "0": {
+        "type": "R",
+        "opcode": 0,
+        "func": 0,
+        "syntax": "sll $rd, $rt, $shift"
+      },
+      "2": {
+        "type": "R",
+        "opcode": 0,
+        "func": 2,
+        "syntax": "srl $rd, $rt, $shift"
+      },
+      "3": {
+        "type": "R",
+        "opcode": 0,
+        "func": 3,
+        "syntax": "sra $rd, $rt, $shift"
+      },
+      "8": {
+        "type": "R",
+        "opcode": 0,
+        "func": 8,
+        "syntax": "jr $rs"
+      },
+      "16": {
+        "type": "R",
+        "opcode": 0,
+        "func": 16,
+        "syntax": "mfhi $rd"
+      },
+      "17": {
+        "type": "R",
+        "opcode": 0,
+        "func": 17,
+        "syntax": "mthi $rs"
+      },
+      "18": {
+        "type": "R",
+        "opcode": 0,
+        "func": 18,
+        "syntax": "mflo $rd"
+      },
+      "19": {
+        "type": "R",
+        "opcode": 0,
+        "func": 19,
+        "syntax": "mtlo $rs"
+      },
+      "24": {
+        "type": "R",
+        "opcode": 0,
+        "func": 24,
+        "syntax": "mult $rs, $rt"
+      },
+      "25": {
+        "type": "R",
+        "opcode": 0,
+        "func": 25,
+        "syntax": "multu $rs, $rt"
+      },
+      "26": {
+        "type": "R",
+        "opcode": 0,
+        "func": 26,
+        "syntax": "div $rs, $rt"
+      },
+      "27": {
+        "type": "R",
+        "opcode": 0,
+        "func": 27,
+        "syntax": "divu $rs, $rt"
+      },
+      "32": {
+        "type": "R",
+        "opcode": 0,
+        "func": 32,
+        "syntax": "add $rd, $rs, $rt"
+      },
+      "33": {
+        "type": "R",
+        "opcode": 0,
+        "func": 33,
+        "syntax": "addu $rd, $rs, $rt"
+      },
+      "34": {
+        "type": "R",
+        "opcode": 0,
+        "func": 34,
+        "syntax": "sub $rd, $rs, $rt"
+      },
+      "35": {
+        "type": "R",
+        "opcode": 0,
+        "func": 35,
+        "syntax": "subu $rd, $rs, $rt"
+      },
+      "36": {
+        "type": "R",
+        "opcode": 0,
+        "func": 36,
+        "syntax": "and $rd, $rs, $rt"
+      },
+      "37": {
+        "type": "R",
+        "opcode": 0,
+        "func": 37,
+        "syntax": "or $rd, $rs, $rt"
+      },
+      "38": {
+        "type": "R",
+        "opcode": 0,
+        "func": 38,
+        "syntax": "xor $rd, $rs, $rt"
+      },
+      "39": {
+        "type": "R",
+        "opcode": 0,
+        "func": 39,
+        "syntax": "nor $rd, $rs, $rt"
+      },
+      "42": {
+        "type": "R",
+        "opcode": 0,
+        "func": 42,
+        "syntax": "slt $rd, $rs, $rt"
+      },
+      "43": {
+        "type": "R",
+        "opcode": 0,
+        "func": 43,
+        "syntax": "sltu $rd, $rs, $rt"
+      }
+    },
+    "2": {
+      "type": "J",
+      "opcode": "0x02",
+      "syntax": "j $offset"
+    },
+    "3": {
+      "type": "J",
+      "opcode": "0x03",
+      "syntax": "jal $offset"
+    },
+    "4": {
+      "type": "I",
+      "opcode": "0x04",
+      "syntax": "beq $rs, $rt, $imm"
+    },
+    "5": {
+      "type": "I",
+      "opcode": "0x05",
+      "syntax": "bne $rs, $rt, $imm"
+    },
+    "6": {
+      "type": "I",
+      "opcode": "0x06",
+      "syntax": "blez $rs, $imm"
+    },
+    "7": {
+      "type": "I",
+      "opcode": "0x07",
+      "syntax": "bgtz $rs, $imm"
+    },
+    "8": {
+      "type": "I",
+      "opcode": "0x08",
+      "syntax": "addi $rt, $rs, $imm"
+    },
+    "9": {
+      "type": "I",
+      "opcode": "0x09",
+      "syntax": "addiu $rt, $rs, $imm"
+    },
+    "10": {
+      "type": "I",
+      "opcode": "0x0A",
+      "syntax": "slti $rt, $rs, $imm"
+    },
+    "11": {
+      "type": "I",
+      "opcode": "0x0B",
+      "syntax": "sltiu $rt, $rs, $imm"
+    },
+    "12": {
+      "type": "I",
+      "opcode": "0x0C",
+      "syntax": "andi $rt, $rs, $imm"
+    },
+    "13": {
+      "type": "I",
+      "opcode": "0x0D",
+      "syntax": "ori $rt, $rs, $imm"
+    },
+    "15": {
+      "type": "I",
+      "opcode": "0x0F",
+      "syntax": "lui $rt, $imm"
+    },
+    "32": {
+      "type": "I",
+      "opcode": "0x20",
+      "syntax": "lb $rt, $imm($rs)"
+    },
+    "35": {
+      "type": "I",
+      "opcode": "0x23",
+      "syntax": "lw $rt, $imm($rs)"
+    },
+    "36": {
+      "type": "I",
+      "opcode": "0x24",
+      "syntax": "lbu $rt, $imm($rs)"
+    },
+    "37": {
+      "type": "I",
+      "opcode": "0x25",
+      "syntax": "lhu $rt, $imm($rs)"
+    },
+    "40": {
+      "type": "I",
+      "opcode": "0x28",
+      "syntax": "sb $rt, $imm($rs)"
+    },
+    "41": {
+      "type": "I",
+      "opcode": "0x29",
+      "syntax": "sh $rt, $imm($rs)"
+    },
+    "43": {
+      "type": "I",
+      "opcode": "0x2B",
+      "syntax": "sw $rt, $imm($rs)"
+    }
+  },
+  "opcode": "0b11111100000000000000000000000000",
+  "r_type_format": {
+    "rs": "0b00000011111000000000000000000000",
+    "rt": "0b00000000000111110000000000000000",
+    "rd": "0b00000000000000001111100000000000",
+    "shift": "0b00000000000000000000011111000000",
+    "func": "0b00000000000000000000000000111111"
+  },
+  "j_type_format": {
+    "offset": "0b00000011111111111111111111111111"
+  },
+  "i_type_format": {
+    "rs": "0b00000011111000000000000000000000",
+    "rt": "0b00000000000111110000000000000000",
+    "imm": "0b00000000000000001111111111111111"
+  }
+}
