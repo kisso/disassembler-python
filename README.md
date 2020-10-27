@@ -1,5 +1,6 @@
 # disassembler-python
-## MIPS32 disassembler
+
+Simple MIPS32 disassembler written in python.
 
 ## Supported instructions:
 
