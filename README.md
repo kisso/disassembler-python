@@ -23,9 +23,9 @@ python main.py -e, --example         use this option to use example program
 
 ## Example
 
-### Example input
+**Example input**
 
-```
+```text
 0x23bdfffc
 0xafbf0000
 0x20040002
@@ -41,9 +41,9 @@ python main.py -e, --example         use this option to use example program
 0x03e00008
 ```
 
-### Example output
+**Example output**
 
-```
+```text
 addi $sp, $sp, 0x0000fffc
 sw $ra, 0x00000000($sp)
 addi $a0, $zero, 0x00000002
