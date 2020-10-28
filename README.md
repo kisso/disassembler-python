@@ -129,11 +129,39 @@ jr $ra
 
 Disassembler translates machine code to language of symbolic instructions.
 
+### Project structure
+
+```
+disassembler-python
+│   .gitignore
+│   LICENSE
+│   main.py
+│   README.md
+│   
+└───disassembler_python
+    │   __init__.py
+    │   disassembler.py
+    │   example_input.txt
+    │   mips.json
+```
+
+- **disassembler-python/** - project root
+- **.gitignore** - gitignore for git
+- **main.py** - entry point for starting application
+- **README.md** - this file
+- **disassembler_python** - package containing logic of disassembler
+- **__init__.py** - package file
+- **disassembler.py** - defines Disassembler class with methods
+- **example_input.txt** - example text for input
+- **mips.json** - mips configuration
+
 ### Instruction file
 
 Disassembler uses `mips.json` file to initialize it's configuration.
 Initialization includes: MIPS registers, MIPS instructions, templates for parsing instructions.
+
 #### mips.json
+
 Structure of file is following:
 
 ```json
@@ -142,13 +170,11 @@ Structure of file is following:
     "0": "$zero",
     "1": "$at",
     "2": "$v0"
-    ...
   },
   "opcodes": [
     0,
     2,
-    3,
-    ...
+    3
   ],
   "instructions": {
     "0": {
@@ -157,26 +183,13 @@ Structure of file is following:
         "opcode": 0,
         "func": 0,
         "syntax": "sll $rd, $rt, $shift"
-      },
-      "2": {
-        "type": "R",
-        "opcode": 0,
-        "func": 2,
-        "syntax": "srl $rd, $rt, $shift"
-      },
-      ...
+      }
     },
     "2": {
       "type": "J",
       "opcode": "0x02",
       "syntax": "j $offset"
-    },
-    "3": {
-      "type": "J",
-      "opcode": "0x03",
-      "syntax": "jal $offset"
-    },
-    ...
+    }
   },
   "opcode": "0b11111100000000000000000000000000",
   "r_type_format": {
@@ -196,5 +209,9 @@ Structure of file is following:
   }
 }
 ```
+
+- **registers:** registers array
+- **instructions:** instructions array, each instruction has it's type, opcode, syntax and optionally function code
+- **opcode/(r/j/i_type_format):** templates for parsing different part of instruction
 
 [Python]: <https://www.python.org/>
