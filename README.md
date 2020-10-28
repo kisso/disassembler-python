@@ -1,6 +1,63 @@
 # disassembler-python
 
+Author: Kryštof Kiss
+
 Simple MIPS32 disassembler written in python.
+
+## Prerequisites
+
+Project was developed in Python. We used PyCharm as IDE.
+
+| Library | Version |
+| ------ | ------ |
+| [Python] | 3.7+ |
+
+## Getting started
+
+To run the application use one of the following commands:
+```
+python main.py -h, --help            show this help message and exit
+python main.py -f FILE, --file FILE  specify a file to decode
+python main.py -e, --example         use this option to use example program
+```
+
+## Example
+
+### Example input
+
+```
+0x23bdfffc
+0xafbf0000
+0x20040002
+0xaf848000
+0x20050003
+0xaf858004
+0x0c10000b
+0xaf828008
+0x8fbf0000
+0x23bd0004
+0x03e00008
+0x00851020
+0x03e00008
+```
+
+### Example output
+
+```
+addi $sp, $sp, 0x0000fffc
+sw $ra, 0x00000000($sp)
+addi $a0, $zero, 0x00000002
+sw $a0, 0x00008000($gp)
+addi $a1, $zero, 0x00000003
+sw $a1, 0x00008004($gp)
+jal 0x0010000b
+sw $v0, 0x00008008($gp)
+lw $ra, 0x00000000($sp)
+addi $sp, $sp, 0x00000004
+jr $ra
+add $v0, $a0, $a1
+jr $ra
+```
 
 ## Supported instructions:
 
@@ -67,3 +124,5 @@ Simple MIPS32 disassembler written in python.
 | I | `sb` | Store Byte | 0x28 (40) |
 | I | `sh` | Store Halfword | 0x29 (41) |
 | I | `sw` | Store Word | 0x2B (43) |
+
+[Python]: <https://www.python.org/>
