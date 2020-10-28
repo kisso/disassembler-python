@@ -132,17 +132,18 @@ Disassembler translates machine code to language of symbolic instructions.
 ### Project structure
 
 ```
-disassembler-python
-│   .gitignore
-│   LICENSE
-│   main.py
-│   README.md
-│   
-└───disassembler_python
-    │   __init__.py
-    │   disassembler.py
-    │   example_input.txt
-    │   mips.json
+disassembler-python/
+│
+├── disassembler_python/
+│   ├── __init__.py
+│   ├── disassembler.py
+│   ├── example_input.txt
+│   └── mips.json
+│
+├── .gitignore
+├── LICENSE
+├── main.py
+└── README.md
 ```
 
 - **disassembler-python/** - project root
