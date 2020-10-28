@@ -10,7 +10,7 @@ Project was developed in Python. We used PyCharm as IDE.
 
 | Library | Version |
 | ------ | ------ |
-| [Python] | 3.7+ |
+| [Python] | 3.8+ |
 
 ## Getting started
 
@@ -124,5 +124,77 @@ jr $ra
 | I | `sb` | Store Byte | 0x28 (40) |
 | I | `sh` | Store Halfword | 0x29 (41) |
 | I | `sw` | Store Word | 0x2B (43) |
+
+## Implementation
+
+Disassembler translates machine code to language of symbolic instructions.
+
+### Instruction file
+
+Disassembler uses `mips.json` file to initialize it's configuration.
+Initialization includes: MIPS registers, MIPS instructions, templates for parsing instructions.
+#### mips.json
+Structure of file is following:
+
+```json
+{
+  "registers": {
+    "0": "$zero",
+    "1": "$at",
+    "2": "$v0"
+    ...
+  },
+  "opcodes": [
+    0,
+    2,
+    3,
+    ...
+  ],
+  "instructions": {
+    "0": {
+      "0": {
+        "type": "R",
+        "opcode": 0,
+        "func": 0,
+        "syntax": "sll $rd, $rt, $shift"
+      },
+      "2": {
+        "type": "R",
+        "opcode": 0,
+        "func": 2,
+        "syntax": "srl $rd, $rt, $shift"
+      },
+      ...
+    },
+    "2": {
+      "type": "J",
+      "opcode": "0x02",
+      "syntax": "j $offset"
+    },
+    "3": {
+      "type": "J",
+      "opcode": "0x03",
+      "syntax": "jal $offset"
+    },
+    ...
+  },
+  "opcode": "0b11111100000000000000000000000000",
+  "r_type_format": {
+    "rs": "0b00000011111000000000000000000000",
+    "rt": "0b00000000000111110000000000000000",
+    "rd": "0b00000000000000001111100000000000",
+    "shift": "0b00000000000000000000011111000000",
+    "func": "0b00000000000000000000000000111111"
+  },
+  "j_type_format": {
+    "offset": "0b00000011111111111111111111111111"
+  },
+  "i_type_format": {
+    "rs": "0b00000011111000000000000000000000",
+    "rt": "0b00000000000111110000000000000000",
+    "imm": "0b00000000000000001111111111111111"
+  }
+}
+```
 
 [Python]: <https://www.python.org/>
