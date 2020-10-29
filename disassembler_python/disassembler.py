@@ -3,9 +3,38 @@ from sys import exit
 
 
 class Disassembler:
+    """
+    A class used to represent Disassembler
+
+    Attributes
+    ----------
+    _opcodes: list[int]
+    _instructions: dict[int, dict()]
+    _registers: dict[str, str]
+    _opcode: str
+    _r_type_format: dict[str, str]
+    _j_type_format: dict[str, str]
+    _i_type_format: dict[str, str]
+    instructions_to_decode: list[str]
+
+    Methods
+    -------
+    _mips_decoder(x)
+        Used for customized decoding json file
+    initialize(path_to_input: str, path_to_configuration: str)
+        Load configuration and input file, creates object
+    decode_instruction(instruction: int)
+        Decodes passed instruction
+    disassemble()
+        Iterates over all instructions in _instructions and passes them to decode_instruction(instruction: int)
+    """
 
     def __init__(self, configuration, instructions_to_decode):
-        self._addr = 4194304
+        """
+        :param configuration
+        :param instructions_to_decode
+        """
+
         self._opcodes = configuration.get('opcodes')
         self._instructions = configuration.get('instructions')
         self._registers = configuration.get('registers')
@@ -17,6 +46,11 @@ class Disassembler:
 
     @staticmethod
     def _mips_decoder(x):
+        """
+        :param x
+        :return
+        """
+
         if isinstance(x, dict):
             new_dict = {}
             for k, v in x.items():
@@ -34,6 +68,12 @@ class Disassembler:
 
     @classmethod
     def initialize(cls, path_to_input: str, path_to_configuration: str):
+        """
+        :param path_to_input
+        :param path_to_configuration
+        :return
+        """
+
         try:
             with open(file=path_to_input) as f:
                 input_data = f.read().splitlines()
@@ -48,8 +88,12 @@ class Disassembler:
         return cls(configuration, input_data)
 
     def decode_instruction(self, instruction: int):
+        """
+        :param instruction
+        :return:
+        """
+
         opcode = (instruction & self._opcode) >> 26
-        print(f'{self._addr:#010x}:', end=' ')
 
         if opcode not in self._opcodes:
             print('Unsupported instruction!')
@@ -97,4 +141,3 @@ class Disassembler:
     def disassemble(self):
         for instruction in self.instructions_to_decode:
             self.decode_instruction(int(instruction, 16))
-            self._addr += 4
