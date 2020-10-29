@@ -150,7 +150,7 @@ disassembler-python/
 - **.gitignore** - gitignore for git
 - **main.py** - entry point for starting application
 - **README.md** - this file
-- **disassembler_python** - package containing logic of disassembler
+- **disassembler_python/** - package containing logic of disassembler
 - **__init__.py** - package file
 - **disassembler.py** - defines Disassembler class with methods
 - **example_input.txt** - example text for input
