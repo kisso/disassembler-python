@@ -87,12 +87,13 @@ class Disassembler:
 
         return cls(configuration, input_data)
 
-    def decode_instruction(self, instruction: int):
+    def decode_instruction(self, hex_instruction):
         """
-        :param instruction
+        :param hex_instruction
         :return:
         """
 
+        instruction = int(hex_instruction, 16)
         opcode = (instruction & self._opcode) >> 26
 
         if opcode not in self._opcodes:
@@ -136,8 +137,8 @@ class Disassembler:
             decoded_instruction = decoded_instruction.replace('$rt', rt)
             decoded_instruction = decoded_instruction.replace('$imm', f'{imm:#010x}')
 
-        print(decoded_instruction)
+        print(f'{hex_instruction} -> {decoded_instruction}')
 
     def disassemble(self):
-        for instruction in self.instructions_to_decode:
-            self.decode_instruction(int(instruction, 16))
+        for hex_instruction in self.instructions_to_decode:
+            self.decode_instruction(hex_instruction)
