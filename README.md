@@ -44,19 +44,19 @@ python main.py -e, --example         use this option to use example program
 **Example output**
 
 ```text
-addi $sp, $sp, 0x0000fffc
-sw $ra, 0x00000000($sp)
-addi $a0, $zero, 0x00000002
-sw $a0, 0x00008000($gp)
-addi $a1, $zero, 0x00000003
-sw $a1, 0x00008004($gp)
-jal 0x0010000b
-sw $v0, 0x00008008($gp)
-lw $ra, 0x00000000($sp)
-addi $sp, $sp, 0x00000004
-jr $ra
-add $v0, $a0, $a1
-jr $ra
+0x23bdfffc -> addi $sp, $sp, 0x0000fffc
+0xafbf0000 -> sw $ra, 0x00000000($sp)
+0x20040002 -> addi $a0, $zero, 0x00000002
+0xaf848000 -> sw $a0, 0x00008000($gp)
+0x20050003 -> addi $a1, $zero, 0x00000003
+0xaf858004 -> sw $a1, 0x00008004($gp)
+0x0c10000b -> jal 0x0010000b
+0xaf828008 -> sw $v0, 0x00008008($gp)
+0x8fbf0000 -> lw $ra, 0x00000000($sp)
+0x23bd0004 -> addi $sp, $sp, 0x00000004
+0x03e00008 -> jr $ra
+0x00851020 -> add $v0, $a0, $a1
+0x03e00008 -> jr $ra
 ```
 
 ## Supported instructions:
