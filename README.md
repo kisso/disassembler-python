@@ -141,6 +141,11 @@ disassembler-python/
 │   ├── example_input.txt
 │   └── mips.json
 │
+├── docs/
+│   ├── dokument.pdf
+│   ├── prezentacia.pdf
+│   └── zaverecny_protokol.pdf
+│
 ├── .gitignore
 ├── LICENSE
 ├── main.py
@@ -156,6 +161,7 @@ disassembler-python/
 - **disassembler.py** - defines Disassembler class with methods
 - **example_input.txt** - example text for input
 - **mips.json** - mips configuration
+- **docs/** - documents
 
 ### Instruction file
 
