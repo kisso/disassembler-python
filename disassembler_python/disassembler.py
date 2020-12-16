@@ -43,6 +43,7 @@ class Disassembler:
         self._j_type_format = configuration.get('j_type_format')
         self._i_type_format = configuration.get('i_type_format')
         self.instructions_to_decode = instructions_to_decode
+        self.output_data = []
 
     @staticmethod
     def _mips_decoder(x):
@@ -137,7 +138,9 @@ class Disassembler:
             decoded_instruction = decoded_instruction.replace('$rt', rt)
             decoded_instruction = decoded_instruction.replace('$imm', f'{imm:#010x}')
 
-        print(f'{hex_instruction} -> {decoded_instruction}')
+        output = f'{hex_instruction} -> {decoded_instruction}'
+        print(output)
+        self.output_data.append(output)
 
     def disassemble(self):
         for hex_instruction in self.instructions_to_decode:
