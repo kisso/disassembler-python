@@ -16,9 +16,10 @@ Project was developed in Python. We used PyCharm as IDE.
 
 To run the application use one of the following commands:
 ```
-python main.py -h, --help            show this help message and exit
-python main.py -f FILE, --file FILE  specify a file to decode
-python main.py -e, --example         use this option to use example program
+python main.py -h, --help                   show this help message and exit
+python main.py -f FILE, --file FILE         specify a file to decode
+python main.py -e, --example                use this option to use example program
+python main.py -o OUTPUT, --output OUTPUT   specify a file to save output in
 ```
 
 ## Example
